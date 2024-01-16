@@ -1,4 +1,6 @@
-﻿namespace ApiProdutos.Entities
+﻿using System.Text.Json.Serialization;
+
+namespace ApiProdutos.Entities
 {
     public class Produto
     {
@@ -7,5 +9,8 @@
         public decimal Preco { get; set; }
         public int Estoque { get; set; }
         public Categoria Categoria { get; set; }
+
+        [JsonIgnore]
+        public int CategoriaId { get; set; }
     }
 }

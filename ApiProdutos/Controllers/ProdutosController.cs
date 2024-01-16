@@ -25,7 +25,13 @@ namespace ApiProdutos.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
         {
-            return await _context.Produtos.ToListAsync();
+            List<Produto> produtos = await _context.Produtos.ToListAsync();
+            foreach (Produto produto in produtos)
+            {
+                produto.Categoria = await _context.Categorias
+                .FirstOrDefaultAsync(c => c.Id == produto.CategoriaId);
+            }
+            return produtos;
         }
 
         // GET: api/Produtoes/5
@@ -78,6 +84,11 @@ namespace ApiProdutos.Controllers
         [HttpPost]
         public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
+            produto.CategoriaId = produto.Categoria.Id;
+            produto.Categoria =
+                await _context.Categorias
+                .FirstOrDefaultAsync(c => c.Id == produto.CategoriaId);
+
             _context.Produtos.Add(produto);
             await _context.SaveChangesAsync();
 
