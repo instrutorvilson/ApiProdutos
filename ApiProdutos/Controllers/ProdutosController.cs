@@ -34,6 +34,28 @@ namespace ApiProdutos.Controllers
             return produtos;
         }
 
+        [HttpGet("/api/[controller]/categoria/{id}")]
+        public async Task<ActionResult<IEnumerable<Produto>>> GetProdutosByCategoria(
+            [FromRoute] int id)
+        {
+            List<Produto> produtos = await _context.Produtos.ToListAsync();
+             var prodByCategoria = 
+                 (from prod  in produtos 
+                 where prod.CategoriaId == id 
+                 select prod).ToList();
+
+            Categoria categoria = await _context.Categorias.FirstOrDefaultAsync(c => c.Id == id);
+            foreach (Produto produto in prodByCategoria)
+            {
+                produto.Categoria = categoria;
+            }
+             return prodByCategoria;
+           /* return (from prod in produtos
+                    where prod.CategoriaId == id
+                    select prod).ToList();*/
+           
+        }
+
         // GET: api/Produtoes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Produto>> GetProduto(int id)
