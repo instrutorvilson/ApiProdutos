@@ -31,12 +31,13 @@ namespace ApiProdutos.Controllers
                 .AsNoTracking()
                 .Skip(pageNumber * pageSize)
                 .Take(pageSize)
+                .Include(c => c.Categoria)
                 .ToListAsync();
-            foreach (Produto produto in produtos)
+           /* foreach (Produto produto in produtos)
             {
                 produto.Categoria = await _context.Categorias
                 .FirstOrDefaultAsync(c => c.Id == produto.CategoriaId);
-            }
+            }*/
             return produtos;
         }
 
