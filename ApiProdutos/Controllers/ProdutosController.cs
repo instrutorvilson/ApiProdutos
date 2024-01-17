@@ -20,13 +20,35 @@ namespace ApiProdutos.Controllers
         {
             _context = context;
         }
+
+        [HttpGet("/api/[controller]/pages")]
+        public async Task<ActionResult<IEnumerable<Produto>>> GetPagesProdutos(
+            [FromQuery] int pageNumber,
+            [FromQuery] int pageSize
+            )
+        {
+            List<Produto> produtos = await _context.Produtos
+                .AsNoTracking()
+                .Skip(pageNumber * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+            foreach (Produto produto in produtos)
+            {
+                produto.Categoria = await _context.Categorias
+                .FirstOrDefaultAsync(c => c.Id == produto.CategoriaId);
+            }
+            return produtos;
+        }
+
         //api/produtos/filtro?descricao=cola
         [HttpGet("/api/[controller]/filtro")]
         public async Task<ActionResult<IEnumerable<Produto>>> GetProdutosByDescricao(
           [FromQuery] string descricao)
         {
             List<Produto> lista = await _context.Produtos.ToListAsync();
-            var produtos = (from prod in lista where prod.Nome.ToLower().Contains(descricao.ToLower()) select prod).ToList();
+            var produtos = (from prod in lista 
+                            where prod.Nome.ToLower().Contains(descricao.ToLower()) 
+                            select prod).ToList();
 
             foreach (Produto produto in produtos)
             {
