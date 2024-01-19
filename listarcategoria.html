@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Categorias</title>
+</head>
+<body>
+    <div>
+        <h1>Listar categorias</h1>
+        <button onclick="carregar()">Carregar</button>
+        <button onclick="inserir()">Inserir</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Preencher via java scrip-->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        async function  inserir(){
+            let obj = {
+                nome: 'teste'
+            }
+           await fetch('https://localhost:7158/api/Categorias',
+              {
+                method: "POST",
+                headers:{'Content-Type': 'application/json'},
+                body: JSON.stringify(obj)
+              }
+            )
+            carregar()            
+        }
+        function carregar(){
+            linha = ''
+            tabela = document.getElementsByTagName("tbody")[0]
+            tabela.innerHTML = ''
+            fetch('https://localhost:7158/api/Categorias')
+            .then(dados => dados.json())
+            .then(resposta => {
+                resposta.forEach(element => {
+                   linha = `<tr><td>${element.id}</td><td>${element.nome}</td></tr>` 
+                   tabela.innerHTML += linha
+                });
+            })
+        }
+    </script>
+</body>
+</html>
