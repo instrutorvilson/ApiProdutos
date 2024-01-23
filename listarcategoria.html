@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de Categorias</title>
 </head>
+
 <body>
     <div>
         <h1>Listar categorias</h1>
         <button onclick="carregar()">Carregar</button>
         <button onclick="inserir()">Inserir</button>
+        <button onclick="login()">Login</button>
         <table>
             <thead>
                 <tr>
@@ -24,45 +27,61 @@
         </table>
     </div>
     <script>
-        let token = localStorage.getItem('token') && 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Impvc2VAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwibmFtZWlkIjoiMSIsIm5iZiI6MTcwNjAyODcwMiwiZXhwIjoxNzA2MDM1OTAyLCJpYXQiOjE3MDYwMjg3MDJ9.X0-WLF7DaEJpRf7SIgdynGwjN4eU2wYTaQCy1LKthwM'
-            
-          async function  inserir(){
+        let token = localStorage.getItem('token') && 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Impvc2VAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwibmFtZWlkIjoiMSIsIm5iZiI6MTcwNjAzNzU4NywiZXhwIjoxNzA2MDQ0Nzg3LCJpYXQiOjE3MDYwMzc1ODd9.7CAdIauPf5J41I5lAceamESlTJXBN9WcgJGYA8x891o'
+        async function inserir() {
             let obj = {
                 descricao: 'teste'
             }
-           await fetch('https://localhost:7123/api/Categorias',
-              {
-                method: "POST",
-                headers:{
-                    'Authorization': 'Bearer ' + token,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(obj)
-              }
+            await fetch('https://localhost:7123/api/Categorias',
+                {
+                    method: "POST",
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(obj)
+                }
             )
-            carregar()            
+            carregar()
         }
-        function carregar(){
+        function carregar() {
             linha = ''
             console.log(token)
             tabela = document.getElementsByTagName("tbody")[0]
             tabela.innerHTML = ''
             fetch('https://localhost:7123/api/Categorias',
-              {
-                headers: { 
-                           'Authorization': 'Bearer ' + token,
-                           'Content-Type': 'application/json'
-                          }
-              }
+                {
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Content-Type': 'application/json'
+                    }
+                }
             )
-            .then(dados => dados.json())
-            .then(resposta => {
-                resposta.forEach(element => {
-                   linha = `<tr><td>${element.id}</td><td>${element.descricao}</td></tr>` 
-                   tabela.innerHTML += linha
-                });
-            })
+                .then(dados => dados.json())
+                .then(resposta => {
+                    resposta.forEach(element => {
+                        linha = `<tr><td>${element.id}</td><td>${element.descricao}</td></tr>`
+                        tabela.innerHTML += linha
+                    });
+                })
+        }
+
+        async function login() {
+          var data = await  fetch('https://localhost:7123/api/Users/login',
+                {
+                    method: "POST",
+                    headers: {                        
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: "jose@gmail.com",
+                        password: "123456"
+                    })
+                }
+            )
+            localStorage.setItem('token',data.token)
         }
     </script>
 </body>
+
 </html>
