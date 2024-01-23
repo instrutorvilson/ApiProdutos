@@ -24,14 +24,19 @@
         </table>
     </div>
     <script>
-        async function  inserir(){
+        let token = localStorage.getItem('token') && 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6Impvc2VAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwibmFtZWlkIjoiMSIsIm5iZiI6MTcwNjAyODcwMiwiZXhwIjoxNzA2MDM1OTAyLCJpYXQiOjE3MDYwMjg3MDJ9.X0-WLF7DaEJpRf7SIgdynGwjN4eU2wYTaQCy1LKthwM'
+            
+          async function  inserir(){
             let obj = {
-                nome: 'teste'
+                descricao: 'teste'
             }
-           await fetch('https://localhost:7158/api/Categorias',
+           await fetch('https://localhost:7123/api/Categorias',
               {
                 method: "POST",
-                headers:{'Content-Type': 'application/json'},
+                headers:{
+                    'Authorization': 'Bearer ' + token,
+                    'Content-Type': 'application/json'
+                },
                 body: JSON.stringify(obj)
               }
             )
@@ -39,13 +44,21 @@
         }
         function carregar(){
             linha = ''
+            console.log(token)
             tabela = document.getElementsByTagName("tbody")[0]
             tabela.innerHTML = ''
-            fetch('https://localhost:7158/api/Categorias')
+            fetch('https://localhost:7123/api/Categorias',
+              {
+                headers: { 
+                           'Authorization': 'Bearer ' + token,
+                           'Content-Type': 'application/json'
+                          }
+              }
+            )
             .then(dados => dados.json())
             .then(resposta => {
                 resposta.forEach(element => {
-                   linha = `<tr><td>${element.id}</td><td>${element.nome}</td></tr>` 
+                   linha = `<tr><td>${element.id}</td><td>${element.descricao}</td></tr>` 
                    tabela.innerHTML += linha
                 });
             })
