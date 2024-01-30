@@ -1,0 +1,14 @@
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\bin\Debug\net8.0\AulaTestes.exe
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\bin\Debug\net8.0\AulaTestes.deps.json
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\bin\Debug\net8.0\AulaTestes.runtimeconfig.json
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\bin\Debug\net8.0\AulaTestes.dll
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\bin\Debug\net8.0\AulaTestes.pdb
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.AssemblyInfoInputs.cache
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.AssemblyInfo.cs
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.csproj.CoreCompileInputs.cache
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.dll
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\refint\AulaTestes.dll
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.pdb
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.genruntimeconfig.cache
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\ref\AulaTestes.dll
