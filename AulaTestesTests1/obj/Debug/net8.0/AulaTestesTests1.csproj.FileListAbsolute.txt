@@ -115,3 +115,4 @@ C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestesTests1\obj\Debug\net8.0\r
 C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestesTests1\obj\Debug\net8.0\AulaTestesTests1.pdb
 C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestesTests1\obj\Debug\net8.0\AulaTestesTests1.genruntimeconfig.cache
 C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestesTests1\obj\Debug\net8.0\ref\AulaTestesTests1.dll
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestesTests1\obj\Debug\net8.0\AulaTestesTests1.sourcelink.json

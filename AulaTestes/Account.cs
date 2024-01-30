@@ -9,6 +9,16 @@ namespace AulaTestes
     public class Account
     {
         public double Balance { get; set; }
+
+        public void store(double v)
+        {
+            if(v < 0)
+            {
+                throw new ArgumentException("Não pode existir depósito com valores negativos");
+            }
+            Balance += v;
+        }
+
         public void Withdraw(double amount)
         {
             if (Balance >= amount)

@@ -12,3 +12,4 @@ C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\refint\
 C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.pdb
 C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.genruntimeconfig.cache
 C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\ref\AulaTestes.dll
+C:\Users\vilson.moro\source\repos\AulaTestes\AulaTestes\obj\Debug\net8.0\AulaTestes.sourcelink.json
